@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Population Visualizations</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div class="button-bar">
+    <button onclick="showSection('world')">🌍 Global</button>
+    <button onclick="showSection('us')"> U.S.</button>
+  </div>
+
+  <!-- SECTION 1: World Urban Population -->
+  <div class="container" id="world-section">
+    <h1>World Urban Population Growth</h1>
+    <label id="yearLabel" for="yearSlider">
+      Select Year: <span id="yearValue">1961</span>
+    </label>
+    <br />
+    <input type="range" id="yearSlider" min="1961" max="2023" value="1961" step="1" />
+    <button id="playButton">▶️ Play</button>
+    <svg id="map"></svg>
+    <div id="tooltip" style="display: none;"></div>
+    <div id="yearAnnotation" class="annotation-box"></div>
+    <h2>Why Visualizing Global Urban Population Matters</h2>
+
+  <p>
+    A visualization of the global urban population is essential for understanding the rapid pace and scale of urbanization around the world. 
+    By presenting data in a clear and visual format, it helps policymakers, researchers, and the public see where population growth is concentrated 
+    and how cities are expanding. Beyond showing current trends, such a visualization also reveals how historical events—like industrialization, 
+    colonialism, migration patterns, and economic development—have shaped the urban landscape over time. For example, it can highlight how 
+    certain regions urbanized earlier due to industrial revolutions, or how political and economic shifts led to rapid urban growth in others. 
+    This historical perspective adds depth to the data, helping us understand not just where we are today, but how we got here. Ultimately, 
+    visualizing these patterns supports better planning, resource allocation, and the development of more equitable and sustainable urban environments.
+  </p>
+  
+  <p>
+    The use of a heat map style is especially effective for representing urban population data. Countries or regions are shaded based on population density 
+    or urban growth rates, making it easy to identify hotspots of rapid urbanization at a glance. The color gradients provide an immediate, intuitive sense 
+    of intensity, which is far more accessible than raw data tables or charts. Users can quickly grasp which parts of the world are experiencing the most 
+    dramatic shifts and compare changes between regions.
+  </p>
+
+  <p>
+    Additionally, the interactive feature of a play button transforms the visualization into a dynamic storytelling tool. Rather than presenting static 
+    snapshots, the play function allows users to watch urbanization unfold year by year. This animation effect adds temporal context, allowing users to see 
+    not just where urbanization is happening, but how fast it's accelerating or decelerating in different areas. This dynamic experience can uncover trends 
+    that might be missed in still images, such as rapid surges in Asia or emerging growth patterns in Africa.
+  </p>
+
+  <p>
+    Overall, combining historical scope, heat map design, and animation provides a deeply engaging and informative way to explore one of the most significant 
+    global transformations of the modern era. It empowers users to not only observe urban population changes, but also to reflect on the forces driving them—
+    from policy decisions and economic shifts to historical legacies and future challenges in urban planning.
+  </p>
+   <p> Dataset Source: https://data.worldbank.org/indicator/SP.URB.TOTL
+    </p>
+  </div>
+
+  <!-- SECTION 2: U.S. Urban Population -->
+  <div class="container" id="us-section" style="display:none">
+    <h1>U.S. Urban Population by State</h1>
+    <label for="usYearSlider">Select Year: <span id="usYearLabel">1970</span></label>
+    <input type="range" id="usYearSlider" min="1970" max="2010" step="10" value="1970">
+    <div id="us-map"></div>
+    <div class="tooltip" id="us-tooltip"></div>
+     <h2>Why a U.S. Urban Population Percentage Map Is Important</h2>
+
+  <p>
+    A map showing the percentage of the urban population across the United States is a vital tool for understanding the country’s demographic distribution and development patterns. It highlights the degree of urbanization in different regions, illustrating where people are concentrated in cities versus rural areas. This information is essential for policymakers, urban planners, and researchers aiming to make informed decisions about infrastructure, transportation, housing, and environmental impact.
+  </p>
+
+  <p>
+    Urban population data can also reveal socioeconomic trends. Areas with higher urban population percentages often correlate with greater access to services like healthcare, education, and employment opportunities, but they may also face challenges such as congestion, pollution, and housing affordability. Conversely, more rural regions may struggle with service accessibility and economic development, but benefit from lower population density and more open space. Understanding these contrasts helps inform resource allocation and regional development strategies.
+  </p>
+
+  <p>
+    Furthermore, urbanization patterns have significant implications for electoral politics, disaster preparedness, and climate resilience. Urban centers tend to have different political, cultural, and economic profiles than rural areas, which influences public policy at all levels of government. In addition, areas with high urban concentration may require more robust infrastructure to handle emergencies, while also needing innovative solutions for sustainability and climate adaptation. A map of urban population percentages can also help people visualize the places they would want to move to. This can help people understand the regional development that is occuring throughout the states and help them make educated decisions on whether they would want to live in certain areas/states.
+  </p>
+  <p> Dataset Source: https://www.icip.iastate.edu/tables/population/urban-pct-states
+    </p>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3"></script>
+  <script src="js/main.js"></script>
+  <script src="js/us-map.js"></script>
+  <script>
+    function showSection(section) {
+      document.getElementById('world-section').style.display = section === 'world' ? 'block' : 'none';
+      document.getElementById('us-section').style.display = section === 'us' ? 'block' : 'none';
+    }
+  </script>
+</body>
+
+</html>
